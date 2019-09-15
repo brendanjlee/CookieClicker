@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     TextView score_text;
     TextView high_text;
 
+    //did this work?
+
 
 
 
