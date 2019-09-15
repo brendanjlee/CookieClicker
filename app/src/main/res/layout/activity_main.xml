@@ -18,6 +18,14 @@
         android:layout_centerHorizontal="true"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Score: "
+        android:textStyle="bold"
+        android:textColor="#F0F8FF"
+        android:textSize="20dp"
+
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
