@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 if(counter == 69){
                     score_text.setText("Nice");
                 }
-                if (counter >= 50) {
-                    score_text.setTextColor(Color.parseColor("#b62f13"));
-                    high_text.setTextColor(Color.parseColor("#b62f13"));
-                }
-                else if (counter >= 100) {
+                if (counter < 100 && counter >= 50) {
                     score_text.setTextColor(Color.parseColor("#216dc9"));
                     high_text.setTextColor(Color.parseColor("#216dc9"));
+                }
+                if (counter >= 100) {
+                    score_text.setTextColor(Color.parseColor("#b62f13"));
+                    high_text.setTextColor(Color.parseColor("#b62f13"));
                 }
 
 
