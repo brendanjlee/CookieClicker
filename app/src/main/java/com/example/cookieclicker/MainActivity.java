@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if(counter == 69){
                     score_text.setText("Nice");
+                    score_text.setTextColor(Color.parseColor("#b48e0c"));
                 }
-                if (counter < 100 && counter >= 50) {
+                if (counter < 100 && counter >= 50 && counter != 69) {
                     score_text.setTextColor(Color.parseColor("#216dc9"));
                     high_text.setTextColor(Color.parseColor("#216dc9"));
                 }
