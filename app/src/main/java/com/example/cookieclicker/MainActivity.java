@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private int counter = 0;
     private int highscore = 0;
     Button count_button;
+    Button subtract_button;
     TextView score_text;
     TextView high_text;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         count_button = (Button) findViewById(R.id.button1);
+        subtract_button = (Button) findViewById(R.id.button2);
         score_text = (TextView) findViewById(R.id.score_count);
         high_text =  (TextView) findViewById(R.id.high_score);
 
@@ -58,7 +60,27 @@ public class MainActivity extends AppCompatActivity {
                     score_text.setTextColor(Color.parseColor("#b62f13"));
                     high_text.setTextColor(Color.parseColor("#b62f13"));
                 }
+                if (counter < 50) {
+                    score_text.setTextColor(Color.parseColor("#fcfcfc"));
+                    high_text.setTextColor(Color.parseColor("#fcfcfc"));
+                }
 
+            }
+        });
+
+        subtract_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter -= 50;
+                score_text.setText(Integer.toString(counter));
+                if (counter < 100 && counter >= 50 && counter != 69) {
+                    score_text.setTextColor(Color.parseColor("#216dc9"));
+                    high_text.setTextColor(Color.parseColor("#216dc9"));
+                }
+                if (counter < 50) {
+                    score_text.setTextColor(Color.parseColor("#fcfcfc"));
+                    high_text.setTextColor(Color.parseColor("#fcfcfc"));
+                }
 
             }
         });
