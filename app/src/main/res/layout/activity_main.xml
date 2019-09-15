@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tx"
+        android:id="@+id/score_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
@@ -19,6 +19,7 @@
         />
 
     <TextView
+        android:id="@+id/high_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="High Score: "
