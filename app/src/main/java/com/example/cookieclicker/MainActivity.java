@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(counter == 69){
                     score_text.setText("Nice");
+                }
+                if (counter >= 50) {
+                    score_text.setTextColor(Color.parseColor("#b62f13"));
+                    high_text.setTextColor(Color.parseColor("#b62f13"));
+                }
+                else if (counter >= 100) {
+                    score_text.setTextColor(Color.parseColor("#216dc9"));
+                    high_text.setTextColor(Color.parseColor("#216dc9"));
                 }
 
 
