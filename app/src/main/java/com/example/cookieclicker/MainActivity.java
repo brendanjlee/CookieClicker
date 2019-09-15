@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
                     high_text.setText("High Score: " + Integer.toString(counter));
                 }
 
+                if(counter == 69){
+                    score_text.setText("Nice");
+                }
+
 
             }
         });
