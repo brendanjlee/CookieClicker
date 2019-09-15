@@ -2,16 +2,16 @@ package com.example.cookieclicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.animation.ObjectAnimator;
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.text.DecimalFormat;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     TextView high_text;
     Layout layout;
     TextView letters;
+    ImageView star;
 
     private static DecimalFormat df2 = new DecimalFormat("#.##"); // then run 'df2.format(number)'
 
@@ -49,18 +50,20 @@ public class MainActivity extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
+        final int height = displayMetrics.heightPixels;
+        final int width = displayMetrics.widthPixels;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final RelativeLayout rL = (RelativeLayout) findViewById(R.id.layout);
 
         count_button = (Button) findViewById(R.id.button1);
         btnAuto = (Button) findViewById(R.id.btnAuto);
         btnClickUpgrade = (Button) findViewById(R.id.btnClickUpgrade);
         score_text = (TextView) findViewById(R.id.score_count);
         high_text = (TextView) findViewById(R.id.high_score);
-        letters = (TextView) findViewById(R.id.letters);
+        //final ImageView star = new ImageView(this);
 
         count_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,9 +184,40 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                ImageView iv = new ImageView(getApplicationContext());
+                iv.setImageDrawable(getDrawable(R.drawable.goldstar));
+                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams((RelativeLayout.LayoutParams.WRAP_CONTENT), RelativeLayout.LayoutParams.WRAP_CONTENT);
+                lp.addRule(RelativeLayout.ABOVE, count_button.getId());
+                iv.setLayoutParams(lp);
+                iv.setScaleX((float) 0.25);
+                iv.setScaleY((float) 0.25);
+
+                rL.addView(iv);
+
+                Random rand4 = new Random();
+                Random rand5 = new Random();
+
+                int deg = rand4.nextInt(360);
+
+                float ySpeed = (float) (1500*Math.cos(deg));
+                float xSpeed = (float) (1500*Math.sin(deg));
+
+                ObjectAnimator animation = ObjectAnimator.ofFloat(iv, "translationX", xSpeed);
+                ObjectAnimator animation2 = ObjectAnimator.ofFloat(iv, "translationY", ySpeed);
 
 
+                animation.setDuration(800);
+                animation2.setDuration(800);
+                animation.start();
+                animation2.start();
 
+                if ((iv.getX() < -200) || (iv.getX() > width+200)) {
+                    iv.setVisibility(View.GONE);
+                }
+
+                if ((iv.getY() < -200) || (iv.getY() > height+200)) {
+                    iv.setVisibility(View.GONE);
+                }
 
                 btnClickUpgrade.setOnClickListener(new View.OnClickListener() {
                     @Override
